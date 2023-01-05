@@ -41,7 +41,5 @@ while True:
 
             print(text)
 
-            if text == 'que horas são' or text == 'me diga as horas':
+            if "horas" in text:
                 speak(core.SystemInfo.get_time())
-
-
