@@ -1,0 +1,4 @@
+SpeechRecognition
+Vosk
+Pyaudio
+pyttsx3

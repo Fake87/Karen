@@ -1,2 +1,0 @@
-# Ivy
- Meu assitente pessoal
