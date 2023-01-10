@@ -1,7 +1,5 @@
-from gettext import npgettext
 import yaml
 import numpy as np
-
 
 data = yaml.safe_load(open('nlu\\train.yml', 'r', encoding='utf-8').read())
 
@@ -12,7 +10,7 @@ for command in data['commands']:
     outputs.append('{}\{}'.format(command['entity'], command['action']))
 
 
-# Processar texto: palavras, caracteres, bytes, sub-palavras
+# Processaar texto: palavras, caracteres, bytes, sub-palavras
 
 chars = set()
 
@@ -21,23 +19,24 @@ for input in inputs + outputs:
         if ch not in chars:
             chars.add(ch)
 
- # Mapeaaar char-idx
+# Mapear char-idx
+
 chr2idx = {}
-idx2chr = {}    
+idx2chr = {} 
 
-for i, chh in enumerate(chars):
-    chr2idx[ch]= i
-    idx2chr[i] = ch
+for i, ch in enumerate(chars):
+    chr2idx[ch] = i 
+    idx2chr[i] = ch 
 
-print('Numero de chars:', len(chars))
+
 
 max_seq = max([len(x) for x in inputs])
 
-print('Numero de chars:', len(chars))
+print('Número de chars:', len(chars))
 print('Maior seq:', max_seq)
 
-# Criar o dataset one_hot (número de exemplos, tamanho da seq, num de caracteres)
-# Criar dataset disperso (número de exemplos, tamanho da seq)
+# Criar o dataset (número de exemplos,tamanho da seq, num caracteres) one-hot
+# Criar dataset disperso (número de exemplos,tamanho da seq)
 
 input_data = np.zeros((len(inputs), max_seq, len(chars)), dtype='int32')
 
@@ -47,6 +46,8 @@ for i, input in enumerate(inputs):
 
 
 print(input_data[0])
+
+
 
 '''
 print(inputs)
