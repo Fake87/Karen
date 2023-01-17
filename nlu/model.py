@@ -1,6 +1,7 @@
 import yaml
 import numpy as np
 
+
 data = yaml.safe_load(open('nlu\\train.yml', 'r', encoding='utf-8').read())
 
 inputs, outputs = [], []
@@ -29,7 +30,6 @@ for i, ch in enumerate(chars):
     idx2chr[i] = ch 
 
 
-
 max_seq = max([len(x) for x in inputs])
 
 print('Número de chars:', len(chars))
@@ -45,7 +45,7 @@ for i, input in enumerate(inputs):
         input_data[i, k, chr2idx[ch]] = 1.0
 
 
-print(input_data[0])
+print(input_data[4])
 
 
 
